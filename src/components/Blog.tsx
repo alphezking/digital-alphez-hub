@@ -28,18 +28,18 @@ const Blog = () => {
   ];
 
   return (
-    <section id="blog" className="py-24 bg-secondary">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-secondary-foreground mb-6">
+    <section id="blog" className="py-16 sm:py-20 md:py-24 bg-secondary">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-secondary-foreground mb-4 sm:mb-6">
             Digital <span className="text-primary">Insights</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base sm:text-lg text-muted-foreground px-2">
             Tips, guides, and strategies for thriving in the digital world
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {posts.map((post, index) => (
             <Card 
               key={index}

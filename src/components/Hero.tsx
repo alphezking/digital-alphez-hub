@@ -22,27 +22,27 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 py-20 text-center">
-        <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
+        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-fade-in">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
             <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Your Digital Growth Partner</span>
+            <span className="text-xs sm:text-sm font-medium text-primary">Your Digital Growth Partner</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight px-2">
             Empowering Local Businesses with{" "}
             <span className="text-primary">Smart Digital Solutions</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto px-4">
             From boosting social media presence to increasing music platform plays — 
             Digital Alphez is your one-stop solution for online growth.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 px-4">
             <Button 
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 animate-glow-pulse"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 w-full sm:w-auto animate-glow-pulse"
               onClick={() => scrollToSection("contact")}
             >
               Get Started
@@ -51,7 +51,7 @@ const Hero = () => {
             <Button 
               size="lg"
               variant="outline"
-              className="border-primary/50 text-primary-foreground hover:bg-primary/10"
+              className="border-primary/50 text-primary-foreground hover:bg-primary/10 w-full sm:w-auto"
               onClick={() => scrollToSection("services")}
             >
               View Our Services
@@ -59,18 +59,18 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">50+</div>
-              <div className="text-sm text-muted-foreground">Happy Clients</div>
+          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 pt-8 sm:pt-12 max-w-2xl mx-auto px-4">
+            <div className="space-y-1 sm:space-y-2">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">50+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Happy Clients</div>
             </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">100+</div>
-              <div className="text-sm text-muted-foreground">Projects Done</div>
+            <div className="space-y-1 sm:space-y-2">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">100+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Projects Done</div>
             </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">98%</div>
-              <div className="text-sm text-muted-foreground">Success Rate</div>
+            <div className="space-y-1 sm:space-y-2">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">98%</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Success Rate</div>
             </div>
           </div>
         </div>
