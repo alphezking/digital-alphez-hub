@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -16,7 +17,7 @@ const Contact = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -29,20 +30,44 @@ const Contact = () => {
       return;
     }
 
-    // Here you would typically send the data to your backend
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
+    try {
+      // Initialize EmailJS
+      emailjs.init("wDWZMdnRMCfHkIVXV");
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      businessName: "",
-      services: "",
-      message: ""
-    });
+      // Send email via EmailJS
+      await emailjs.send(
+        "service_90du9z7",
+        "template_3yw104n",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          business_name: formData.businessName,
+          services: formData.services,
+          message: formData.message,
+        }
+      );
+
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        businessName: "",
+        services: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast({
+        title: "Failed to Send",
+        description: "Please try again or contact us directly via email.",
+        variant: "destructive"
+      });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
