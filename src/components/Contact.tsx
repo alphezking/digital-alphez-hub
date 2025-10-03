@@ -6,6 +6,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -74,6 +81,13 @@ const Contact = () => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleServiceChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      services: value
     }));
   };
 
@@ -193,13 +207,19 @@ const Contact = () => {
                 <label htmlFor="services" className="block text-sm font-medium mb-2">
                   Services Needed
                 </label>
-                <Input
-                  id="services"
-                  name="services"
-                  value={formData.services}
-                  onChange={handleChange}
-                  placeholder="e.g., Social Media, Web Design"
-                />
+                <Select value={formData.services} onValueChange={handleServiceChange}>
+                  <SelectTrigger className="w-full bg-background">
+                    <SelectValue placeholder="Select a service" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-background border-border z-50">
+                    <SelectItem value="Social Media Boosting">Social Media Boosting</SelectItem>
+                    <SelectItem value="Music Promotion">Music Promotion</SelectItem>
+                    <SelectItem value="Web Solutions">Web Solutions</SelectItem>
+                    <SelectItem value="Digital Marketing">Digital Marketing</SelectItem>
+                    <SelectItem value="Problem-Solving Hub">Problem-Solving Hub</SelectItem>
+                    <SelectItem value="Multiple Services">Multiple Services</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <div>
