@@ -19,9 +19,9 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    businessName: "",
     services: "",
-    message: ""
+    budget: "",
+    message: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -33,11 +33,14 @@ const Contact = () => {
     try {
       emailjs.init("wDWZMdnRMCfHkIVXV");
       await emailjs.send("service_90du9z7", "template_3yw104n", {
-        from_name: formData.name, from_email: formData.email,
-        business_name: formData.businessName, services: formData.services, message: formData.message,
+        from_name: formData.name,
+        from_email: formData.email,
+        business_name: "",
+        services: formData.services,
+        message: `Budget: ${formData.budget}\n\n${formData.message}`,
       });
       toast({ title: "Message Sent!", description: "We'll get back to you within 24 hours." });
-      setFormData({ name: "", email: "", businessName: "", services: "", message: "" });
+      setFormData({ name: "", email: "", services: "", budget: "", message: "" });
     } catch (error) {
       console.error("EmailJS Error:", error);
       toast({ title: "Failed to Send", description: "Please try again or contact us directly via email.", variant: "destructive" });
@@ -45,95 +48,103 @@ const Contact = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 md:py-32 bg-background relative overflow-hidden">
-      <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -translate-x-1/2" />
-      <div className="container mx-auto px-4 sm:px-6 relative">
-        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 animate-fade-in">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase mb-4">Contact</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 font-display">
-            Let's Work <span className="text-gradient">Together</span>
+    <section id="contact" className="py-20 sm:py-28 bg-background">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-2xl mx-auto text-center mb-14 animate-fade-in">
+          <p className="text-primary font-semibold text-sm tracking-widest uppercase mb-3">Contact</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Let's Build <span className="text-primary">Together</span>
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground px-2">
-            Ready to transform your business? Get in touch and let's discuss your goals
+          <p className="text-muted-foreground">
+            Ready to start your project? Fill out the form and we'll get back to you within 24 hours.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
-          <div className="space-y-6 sm:space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
+          {/* Info */}
+          <div className="lg:col-span-2 space-y-6">
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 font-display">Get in Touch</h3>
-              <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">
-                Have a project in mind? Fill out the form or reach out directly. We're here to help your business grow.
+              <h3 className="text-xl font-bold mb-2">Get in Touch</h3>
+              <p className="text-muted-foreground text-sm">
+                Have a project in mind? We'd love to hear about it. Reach out and let's make it happen.
               </p>
             </div>
-            <div className="space-y-4 sm:space-y-6">
+            <div className="space-y-4">
               {[
-                { icon: Mail, label: "Email", value: "alphezking@gmail.com", href: "mailto:alphezking@gmail.com" },
-                { icon: Phone, label: "Phone", value: "+231 887 303 826", href: "tel:+231887303826" },
-                { icon: MapPin, label: "Location", value: "Liberia, West Africa" },
+                { icon: Mail, label: "alphezking@gmail.com", href: "mailto:alphezking@gmail.com" },
+                { icon: Phone, label: "+231 887 303 826", href: "tel:+231887303826" },
+                { icon: MapPin, label: "Liberia, West Africa" },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-6 h-6 text-primary" />
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <item.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <div>
-                    <div className="font-semibold mb-1 font-display">{item.label}</div>
-                    {item.href ? (
-                      <a href={item.href} className="text-muted-foreground hover:text-primary transition-colors">{item.value}</a>
-                    ) : (
-                      <p className="text-muted-foreground">{item.value}</p>
-                    )}
-                  </div>
+                  {item.href ? (
+                    <a href={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span className="text-sm text-muted-foreground">{item.label}</span>
+                  )}
                 </div>
               ))}
             </div>
-            <Card className="p-6 bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
-              <h4 className="font-bold mb-2 text-primary font-display">Book a Free Consultation</h4>
-              <p className="text-sm text-muted-foreground">
-                Schedule a 30-minute call to discuss your digital strategy and how we can help you achieve your goals.
+            <Card className="p-5 bg-foreground text-background border-0">
+              <h4 className="font-bold mb-1 text-primary">Free Consultation</h4>
+              <p className="text-sm text-background/60">
+                Book a 30-minute call to discuss your goals and get a custom strategy — no strings attached.
               </p>
             </Card>
           </div>
 
-          <Card className="p-6 sm:p-8 border-border/30 bg-card">
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          {/* Form */}
+          <Card className="lg:col-span-3 p-6 sm:p-8 border-border">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">Name *</label>
-                <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your full name" required className="rounded-xl" />
+                <label htmlFor="name" className="block text-sm font-medium mb-1.5">Name *</label>
+                <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your full name" required className="h-12" />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">Email *</label>
-                <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" required className="rounded-xl" />
+                <label htmlFor="email" className="block text-sm font-medium mb-1.5">Email *</label>
+                <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" required className="h-12" />
               </div>
               <div>
-                <label htmlFor="businessName" className="block text-sm font-medium mb-2">Business Name</label>
-                <Input id="businessName" name="businessName" value={formData.businessName} onChange={handleChange} placeholder="Your business name" className="rounded-xl" />
-              </div>
-              <div>
-                <label htmlFor="services" className="block text-sm font-medium mb-2">Services Needed</label>
-                <Select value={formData.services} onValueChange={(v) => setFormData(prev => ({ ...prev, services: v }))}>
-                  <SelectTrigger className="w-full bg-background rounded-xl">
+                <label htmlFor="services" className="block text-sm font-medium mb-1.5">Service Needed</label>
+                <Select value={formData.services} onValueChange={(v) => setFormData((prev) => ({ ...prev, services: v }))}>
+                  <SelectTrigger className="w-full h-12 bg-background">
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
                   <SelectContent className="bg-background border-border z-50">
-                    <SelectItem value="Social Media Boosting">Social Media Boosting</SelectItem>
-                    <SelectItem value="Music Promotion">Music Promotion</SelectItem>
-                    <SelectItem value="Web Solutions">Web Solutions</SelectItem>
-                    <SelectItem value="Digital Marketing">Digital Marketing</SelectItem>
-                    <SelectItem value="Problem-Solving Hub">Problem-Solving Hub</SelectItem>
-                    <SelectItem value="Multiple Services">Multiple Services</SelectItem>
+                    <SelectItem value="Starter Package">Starter Package</SelectItem>
+                    <SelectItem value="Growth Package">Growth Package</SelectItem>
+                    <SelectItem value="Premium Package">Premium Package</SelectItem>
+                    <SelectItem value="Custom Project">Custom Project</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">Message *</label>
-                <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project..." rows={5} required className="rounded-xl" />
+                <label htmlFor="budget" className="block text-sm font-medium mb-1.5">Budget Range</label>
+                <Select value={formData.budget} onValueChange={(v) => setFormData((prev) => ({ ...prev, budget: v }))}>
+                  <SelectTrigger className="w-full h-12 bg-background">
+                    <SelectValue placeholder="Select budget range" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-background border-border z-50">
+                    <SelectItem value="Under $100">Under $100</SelectItem>
+                    <SelectItem value="$100 - $300">$100 – $300</SelectItem>
+                    <SelectItem value="$300 - $600">$300 – $600</SelectItem>
+                    <SelectItem value="$600+">$600+</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-              <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium mb-1.5">Message *</label>
+                <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project..." rows={4} required />
+              </div>
+              <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-12">
                 Send Message
                 <Send className="ml-2 w-4 h-4" />
               </Button>
