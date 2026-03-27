@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 const Testimonials = () => {
   const testimonials = [
@@ -12,32 +12,41 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-20 sm:py-28 bg-secondary">
+    <section id="testimonials" className="section-padding bg-secondary">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="max-w-2xl mx-auto text-center mb-14 animate-fade-in">
-          <p className="text-primary font-semibold text-sm tracking-widest uppercase mb-3">Testimonials</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+        <div className="max-w-2xl mx-auto text-center mb-16 animate-fade-in">
+          <p className="text-primary font-semibold text-xs tracking-[0.25em] uppercase mb-4">Testimonials</p>
+          <h2 className="section-heading mb-5">
             What Our Clients <span className="text-primary">Say</span>
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground font-light text-base sm:text-lg">
             Don't just take our word for it — hear from the people we've helped grow.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {testimonials.map((t, index) => (
-            <Card key={index} className="p-6 border-border hover:shadow-lg transition-all duration-300">
-              <div className="flex gap-1 mb-4">
+            <Card key={index} className="p-8 border-border hover:shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 group">
+              <Quote className="w-8 h-8 text-primary/20 mb-4 group-hover:text-primary/30 transition-colors" />
+              
+              <div className="flex gap-1 mb-5">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+              
+              <p className="text-muted-foreground text-sm leading-relaxed mb-8 font-light">
                 "{t.content}"
               </p>
-              <div className="pt-4 border-t border-border">
-                <div className="font-semibold text-sm">{t.name}</div>
-                <div className="text-xs text-muted-foreground">{t.role}</div>
+              
+              <div className="pt-5 border-t border-border flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <span className="text-sm font-bold text-primary">{t.name.charAt(0)}</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-sm">{t.name}</div>
+                  <div className="text-xs text-muted-foreground">{t.role}</div>
+                </div>
               </div>
             </Card>
           ))}
