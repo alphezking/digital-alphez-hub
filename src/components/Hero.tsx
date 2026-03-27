@@ -1,89 +1,66 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Zap } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
-  const scrollToSection = (id: string) => {
+  const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-        <div className="absolute inset-0 bg-secondary/85" />
-      </div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-foreground">
+      {/* Subtle accent glow */}
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[120px]" />
 
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/10 rounded-full blur-[100px] animate-float" />
-      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-accent/10 rounded-full blur-[120px] animate-float" style={{ animationDelay: "1.5s" }} />
-
-      {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
-        <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8 animate-fade-in">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass">
-            <Sparkles className="w-4 h-4 text-accent" />
-            <span className="text-xs sm:text-sm font-medium text-accent">Your Digital Growth Partner</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-secondary-foreground leading-[1.1] px-2 font-display tracking-tight">
-            Empowering Local Businesses with{" "}
-            <span className="text-gradient">Smart Digital Solutions</span>
-          </h1>
-
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4 leading-relaxed">
-            From boosting social media presence to increasing music platform plays —
-            Digital Alphez is your one-stop solution for online growth.
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 py-20 sm:py-28">
+        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
+          <p className="text-primary font-semibold text-sm sm:text-base tracking-widest uppercase">
+            Design • Websites • Promotion
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 px-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-background leading-[1.08] tracking-tight">
+            We Help Artists & Brands{" "}
+            <span className="text-primary">Grow Faster</span> Online
+          </h1>
+
+          <p className="text-lg sm:text-xl text-background/60 max-w-2xl mx-auto leading-relaxed">
+            Digitalalphez is a creative growth agency helping artists and small businesses build their brand, get more clients, and scale online.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 w-full sm:w-auto animate-glow-pulse rounded-full text-base"
-              onClick={() => scrollToSection("contact")}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 h-14 text-base w-full sm:w-auto"
+              onClick={() => scrollTo("contact")}
             >
-              Get Started
+              Start a Project
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-primary/40 text-secondary-foreground hover:bg-primary/10 w-full sm:w-auto rounded-full text-base"
-              onClick={() => scrollToSection("services")}
+              className="border-background/20 text-background hover:bg-background/10 h-14 text-base w-full sm:w-auto"
+              onClick={() => scrollTo("portfolio")}
             >
-              <Zap className="mr-2 w-4 h-4 text-accent" />
-              View Our Services
+              View Our Work
             </Button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 pt-10 sm:pt-14 max-w-3xl mx-auto px-4">
-            {[
-              { value: "50+", label: "Happy Clients" },
-              { value: "100+", label: "Projects Done" },
-              { value: "98%", label: "Success Rate" },
-            ].map((stat, i) => (
-              <div key={i} className="glass rounded-2xl p-4 sm:p-6 space-y-1 sm:space-y-2">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient font-display">{stat.value}</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
+          {/* Trust bar */}
+          <div className="pt-12 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 text-background/40 text-sm">
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              50+ Clients Served
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              100+ Projects Delivered
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary" />
+              98% Satisfaction Rate
+            </span>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-primary rounded-full" />
         </div>
       </div>
     </section>
