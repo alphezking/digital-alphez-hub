@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import logoAsset from "@/assets/logo.png.asset.json";
 
 const Footer = () => {
   const year = new Date().getFullYear();
