@@ -1,124 +1,54 @@
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Check, ArrowRight, Star, Clock } from "lucide-react";
+import {
+  Globe, GraduationCap, Megaphone, Cog, Palette, Smartphone, Briefcase, ShoppingCart, ArrowUpRight,
+} from "lucide-react";
 
 const Services = () => {
-  const packages = [
-    {
-      name: "Starter",
-      price: "$99",
-      description: "Perfect for getting started with your online presence.",
-      features: [
-        "Logo design or refresh",
-        "Social media setup (2 platforms)",
-        "Basic brand kit",
-        "1 week delivery",
-      ],
-      popular: false,
-    },
-    {
-      name: "Growth",
-      price: "$299",
-      description: "The most popular choice for serious growth.",
-      features: [
-        "Custom website (1–3 pages)",
-        "Full social media branding",
-        "Content strategy guide",
-        "SEO basics setup",
-        "2 weeks delivery",
-        "1 month support",
-      ],
-      popular: true,
-    },
-    {
-      name: "Premium",
-      price: "$599",
-      description: "Complete branding + web + promotion package.",
-      features: [
-        "Full brand identity design",
-        "Custom website (up to 7 pages)",
-        "Social media management (1 month)",
-        "Ad campaign setup",
-        "Music/content promotion",
-        "Priority support",
-      ],
-      popular: false,
-    },
+  const services = [
+    { icon: Globe, title: "Website Design & Development", desc: "Professional websites that are responsive, secure, fast, and optimized for business growth." },
+    { icon: GraduationCap, title: "School Digital Transformation", desc: "Student portals, school management systems, digital admissions, and online learning platforms." },
+    { icon: Megaphone, title: "Digital Marketing", desc: "SEO, social media management, content marketing, online advertising, and brand growth strategies." },
+    { icon: Cog, title: "Business Automation", desc: "Streamline operations using digital workflows, automation tools, and cloud technologies." },
+    { icon: Palette, title: "Graphic Design & Branding", desc: "Logos, business identities, marketing materials, and professional visual communication." },
+    { icon: Smartphone, title: "Mobile App Development", desc: "Custom Android and iOS applications designed for business growth and customer engagement." },
+    { icon: Briefcase, title: "IT Consulting", desc: "Technology strategy, digital roadmaps, system implementation, and digital adoption support." },
+    { icon: ShoppingCart, title: "E-Commerce Solutions", desc: "Online stores and payment integration solutions for businesses of all sizes." },
   ];
 
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollToContact = () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="services" className="section-padding bg-secondary">
+    <section id="services" className="section-padding bg-secondary relative">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="max-w-2xl mx-auto text-center mb-16 animate-fade-in">
-          <p className="text-primary font-semibold text-xs tracking-[0.25em] uppercase mb-4">Our Packages</p>
+        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
+          <p className="text-primary font-semibold text-xs tracking-[0.25em] uppercase mb-4">Our Services</p>
           <h2 className="section-heading mb-5">
-            Choose Your <span className="text-primary">Growth Plan</span>
+            Digital Transformation <span className="text-gradient">Services</span>
           </h2>
-          <p className="text-muted-foreground text-base sm:text-lg font-light">
-            Simple, transparent pricing designed to deliver real results for your business.
+          <p className="text-foreground/60 text-base sm:text-lg font-light">
+            A complete range of technology solutions designed to help organizations operate smarter,
+            grow faster, and stay competitive in an increasingly digital world.
           </p>
         </div>
 
-        {/* Urgency */}
-        <div className="flex items-center justify-center gap-2 mb-10">
-          <Clock className="w-4 h-4 text-primary" />
-          <p className="text-sm font-medium text-muted-foreground">
-            Limited slots available this week — <span className="text-primary font-semibold">book now</span>
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
-          {packages.map((pkg, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
+          {services.map((s, i) => (
             <Card
-              key={index}
-              className={`p-8 sm:p-10 relative transition-all duration-500 hover:-translate-y-2 group ${
-                pkg.popular
-                  ? "border-primary/50 bg-foreground text-background shadow-[var(--shadow-premium)] scale-[1.03]"
-                  : "border-border bg-card hover:shadow-[var(--shadow-elevated)] hover:border-primary/20"
-              }`}
+              key={i}
+              onClick={scrollToContact}
+              className="group relative p-7 bg-card border-border hover:border-primary/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-elevated)] cursor-pointer overflow-hidden"
             >
-              {pkg.popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1.5 bg-primary text-primary-foreground text-xs font-bold px-5 py-1.5 rounded-full shadow-[0_4px_16px_hsl(48_96%_53%_/_0.3)]">
-                    <Star className="w-3.5 h-3.5" /> Most Popular
-                  </span>
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-primary/0 group-hover:bg-primary/10 rounded-full blur-2xl transition-all duration-500" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/15 transition-colors">
+                  <s.icon className="w-6 h-6 text-primary" />
                 </div>
-              )}
-
-              <div className="mb-8">
-                <h3 className={`text-xl font-bold mb-2 ${pkg.popular ? "text-background" : ""}`}>{pkg.name}</h3>
-                <p className={`text-sm font-light ${pkg.popular ? "text-background/50" : "text-muted-foreground"}`}>{pkg.description}</p>
+                <h3 className="font-bold text-base text-foreground mb-2 leading-snug">{s.title}</h3>
+                <p className="text-sm text-foreground/55 font-light leading-relaxed">{s.desc}</p>
+                <div className="mt-5 flex items-center gap-1 text-xs font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more <ArrowUpRight className="w-4 h-4" />
+                </div>
               </div>
-
-              <div className="mb-8">
-                <span className={`text-5xl font-extrabold ${pkg.popular ? "text-primary" : ""}`}>{pkg.price}</span>
-                <span className={`text-sm ml-1 ${pkg.popular ? "text-background/40" : "text-muted-foreground"}`}>/ project</span>
-              </div>
-
-              <ul className="space-y-3.5 mb-10">
-                {pkg.features.map((feature, idx) => (
-                  <li key={idx} className={`flex items-start gap-3 text-sm ${pkg.popular ? "text-background/70" : "text-muted-foreground"}`}>
-                    <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                className={`w-full font-semibold h-12 rounded-xl transition-all duration-300 ${
-                  pkg.popular
-                    ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_8px_24px_hsl(48_96%_53%_/_0.3)]"
-                    : "bg-foreground hover:bg-foreground/90 text-background group-hover:shadow-lg"
-                }`}
-                onClick={scrollToContact}
-              >
-                Get Started
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
             </Card>
           ))}
         </div>
