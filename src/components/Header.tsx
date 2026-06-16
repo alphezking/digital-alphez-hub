@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logoAsset from "@/assets/logo.png.asset.json";
 
 const links = [
   { label: "Home", id: "home" },
@@ -50,12 +51,11 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
           <button onClick={() => scrollTo("home")} className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-lg bg-gold-gradient flex items-center justify-center font-bold text-primary-foreground text-lg shadow-[var(--shadow-gold)]">
-              A
-            </div>
-            <span className="text-base sm:text-lg font-bold text-foreground">
-              Alphez<span className="text-primary"> Digital</span>
-            </span>
+            <img
+              src={logoAsset.url}
+              alt="Alphez Digital Solution"
+              className="h-10 sm:h-12 w-auto rounded-md bg-white"
+            />
           </button>
 
           <nav className="hidden lg:flex items-center gap-1">

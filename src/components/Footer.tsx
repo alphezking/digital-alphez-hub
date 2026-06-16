@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import logoAsset from "@/assets/logo.png.asset.json";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -22,9 +23,12 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-gold-gradient flex items-center justify-center font-bold text-primary-foreground text-lg shadow-[var(--shadow-gold)]">A</div>
-              <span className="text-lg font-bold text-foreground">Alphez<span className="text-primary"> Digital</span></span>
+            <div className="mb-4">
+              <img
+                src={logoAsset.url}
+                alt="Alphez Digital Solution"
+                className="h-12 w-auto rounded-md bg-white"
+              />
             </div>
             <p className="text-foreground/55 text-sm font-light leading-relaxed mb-5">
               Transforming Ideas Into Digital Success. We help businesses, schools, NGOs, and organizations
@@ -70,7 +74,7 @@ const Footer = () => {
         </div>
 
         <div className="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <p className="text-xs text-foreground/40">© {year} Alphez Digital Solutions. All rights reserved.</p>
+          <p className="text-xs text-foreground/40">© {year} Alphez Digital Solution. All rights reserved.</p>
           <p className="text-xs text-foreground/40">Transforming Ideas Into Digital Success.</p>
         </div>
       </div>
