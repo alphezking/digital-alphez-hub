@@ -3,7 +3,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const FAQ = () => {
   const faqs = [
     {
-      q: "What services does Alphez Digital Solutions offer?",
+      q: "What services does Alphez Digital Solution offer?",
       a: "We offer website design, school digital transformation, digital marketing, business automation, branding, mobile app development, IT consulting, and e-commerce solutions.",
     },
     {

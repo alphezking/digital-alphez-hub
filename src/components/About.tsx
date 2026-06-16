@@ -17,7 +17,7 @@ const About = () => {
             Bridging Business with <span className="text-gradient">Modern Technology</span>
           </h2>
           <p className="text-foreground/60 leading-relaxed text-base sm:text-lg font-light">
-            Alphez Digital Solutions is a technology-driven company dedicated to helping organizations navigate
+            Alphez Digital Solution is a technology-driven company dedicated to helping organizations navigate
             the digital age. We provide innovative digital transformation services that improve operations,
             enhance customer engagement, increase productivity, and accelerate business growth. Our mission is
             to bridge the gap between traditional business processes and modern technology by delivering

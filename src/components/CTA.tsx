@@ -16,7 +16,7 @@ const CTA = () => {
               <span className="text-gradient">Organization Digitally?</span>
             </h2>
             <p className="text-foreground/60 text-base sm:text-lg max-w-2xl mx-auto font-light">
-              Book a free consultation today and discover how Alphez Digital Solutions can help you grow faster,
+              Book a free consultation today and discover how Alphez Digital Solution can help you grow faster,
               operate smarter, and reach more customers.
             </p>
             <div className="pt-2">

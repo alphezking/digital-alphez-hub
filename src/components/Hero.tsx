@@ -36,7 +36,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-foreground/60 max-w-3xl mx-auto leading-relaxed font-light">
-            Alphez Digital Solutions helps businesses, schools, NGOs, and organizations embrace technology,
+            Alphez Digital Solution helps businesses, schools, NGOs, and organizations embrace technology,
             improve efficiency, strengthen their online presence, and achieve sustainable growth through
             innovative digital solutions.
           </p>

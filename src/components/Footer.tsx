@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
 
         <div className="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <p className="text-xs text-foreground/40">© {year} Alphez Digital Solutions. All rights reserved.</p>
+          <p className="text-xs text-foreground/40">© {year} Alphez Digital Solution. All rights reserved.</p>
           <p className="text-xs text-foreground/40">Transforming Ideas Into Digital Success.</p>
         </div>
       </div>
