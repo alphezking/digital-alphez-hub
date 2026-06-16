@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logoAsset from "@/assets/logo.png.asset.json";
 
 const links = [
   { label: "Home", id: "home" },
